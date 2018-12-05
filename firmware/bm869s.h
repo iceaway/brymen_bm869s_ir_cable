@@ -86,5 +86,3 @@
 #define NUMBER_7 0xa8
 #define NUMBER_8 0xfe
 #define NUMBER_9 0xfc
-
-char Decode_7seg ( unsigned char val );

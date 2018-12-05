@@ -32,11 +32,15 @@ unsigned char getByte( void )
 {
     unsigned char result, mask;
 
+    // bit by bit check (using shift mask)
+    // clock --> check --> "unclock"
     for ( mask = 1, result = 0; mask != 0; mask <<= 1 ) {
         digitalWrite( IRTX, HIGH );
         _delay_us( 250 );
 
-        if ( PINB & ( 1 << IRRX ) ) result |= mask;
+        // checking on low instead of high, so maybe we can reuse
+        // some work done on eevblog forum
+        if ( digitalRead( IRRX ) == LOW ) result |= mask;
 
         digitalWrite( IRTX, LOW );
         _delay_us( 250 );
@@ -51,13 +55,16 @@ int readBM689s ( void )
     unsigned int timeout;
     unsigned char j;
 
-    while ( IRRX == HIGH );
+    // wait in case dmm is transmitting already
+    while ( digitalRead( IRRX ) == HIGH );
 
+    // init communication 10ms pulse
     digitalWrite( IRTX, HIGH );
     _delay_ms( 10 );
     digitalWrite( IRTX, LOW );
     timeout = 0;
 
+    // wait for dmm response
     while ( digitalRead( IRRX ) == LOW ) {
         _delay_ms( 1 );
         timeout++;
@@ -65,6 +72,7 @@ int readBM689s ( void )
         if ( timeout > 1000 ) break;
     }
 
+    // if we did not reach timeout, get 20 bytes.
     if ( timeout <= 1000 ) {
         for ( j = 0; j < BM_PBYTES; j++ ) bm[j] = getByte();
 
@@ -294,6 +302,7 @@ void Send_Disp2 ( void )
             }
         }
 
+        // Frequency
         if ( bm[13] & Hz_2 ) {
             if ( ( bm[13] & k_2 ) || ( bm[13] & M_2 ) ) {
                 printc( 'E' );
@@ -321,11 +330,11 @@ int main( void )
 
     while ( 1 ) {
         readBM689s();
-        /* Send_Disp1(); */
-        /* Send_Disp2(); */
-
-        for ( unsigned char j = 0; j < BM_PBYTES; j++ ) printc( bm[j] );
-
+        Send_Disp1();
+        printc( ' ' );
+        Send_Disp2();
+        printc( '\r' );
+        printc( '\n' );
         _delay_ms( 200 );
     }
 
