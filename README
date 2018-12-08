@@ -1,0 +1,18 @@
+# Brymen 869s Serial cable
+
+BOM:
+
+  * micro controller ATTiny85
+  * One infrared diode.
+  * One photodiode.
+  * 3 resistors (75R 4k7 2k)
+  * One NPN BJT (like the 2N2222A)
+  * A usb to serial adapter that can provid 5v.
+
+I built it on a perfboard, so no pcb design is provided.
+
+The 3D desigh fits perfectly and leaves 48 x 11 mm (more or less) of
+space for the pcb. An STL file can be found at (in case you don't know
+how to use FreeCAD):
+
+https://onna.be/files/brymen_cable_attachemnt_v2.stl
