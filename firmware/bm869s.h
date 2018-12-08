@@ -1,3 +1,4 @@
+// Credit to user 'jesuscf' of the EEVBlog Forum.
 // The meaning of each of the bytes received from the multimeter
 // Byte 0
 #define AUTO 0x01

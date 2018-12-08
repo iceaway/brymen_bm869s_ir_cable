@@ -1,3 +1,13 @@
+/*
+ * all the relevant parts of this code have been shamelessly taken and adapted
+ * from here:
+ *
+ * https://www.eevblog.com/forum/testgear/brymen-ir-connection-protocol-anyone-sniffed-it-yet/msg874805/#msg874805
+ *
+ * All credit goes to eevblog forum user 'jesuscf'. I just adapted to AVR C for
+ * the ATTiny85
+ */
+
 #include <avr/io.h>
 #include <util/delay.h>
 
