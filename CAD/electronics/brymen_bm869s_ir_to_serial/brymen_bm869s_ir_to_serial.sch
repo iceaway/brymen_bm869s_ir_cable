@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -69,17 +69,6 @@ F 3 "~" H 5000 2800 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L MCU_Microchip_ATtiny:ATtiny85-20PU U1
-U 1 1 5C0672F2
-P 3400 2150
-F 0 "U1" H 2870 2196 50  0000 R CNN
-F 1 "ATtiny85-20PU" H 2870 2105 50  0000 R CNN
-F 2 "Package_DIP:DIP-8_W7.62mm" H 3400 2150 50  0001 C CIN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/atmel-2586-avr-8-bit-microcontroller-attiny25-attiny45-attiny85_datasheet.pdf" H 3400 2150 50  0001 C CNN
-	1    3400 2150
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+5V #PWR01
 U 1 1 5C0673A0
 P 5000 1000
@@ -124,20 +113,6 @@ F 3 "~" H 5350 3450 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	4000 1850 5500 1850
-Wire Wire Line
-	5500 1850 5500 1900
-Wire Wire Line
-	5500 1900 5850 1900
-Wire Wire Line
-	4000 1950 5500 1950
-Wire Wire Line
-	5500 1950 5500 2000
-Wire Wire Line
-	5500 2000 5850 2000
-NoConn ~ 4000 2250
-NoConn ~ 4000 2350
-Wire Wire Line
 	5000 2500 5000 2600
 Wire Wire Line
 	5850 2100 5650 2100
@@ -146,18 +121,12 @@ Wire Wire Line
 Wire Wire Line
 	5650 3200 5350 3200
 Wire Wire Line
-	3400 3200 3400 2750
-Wire Wire Line
 	5000 2950 5000 3200
 Connection ~ 5000 3200
 Wire Wire Line
 	4150 2250 4150 2150
 Wire Wire Line
 	4150 2150 4000 2150
-Wire Wire Line
-	4000 2050 4700 2050
-Wire Wire Line
-	4700 2050 4700 2600
 Wire Wire Line
 	4700 2600 5000 2600
 Connection ~ 5000 2600
@@ -170,13 +139,9 @@ Wire Wire Line
 Connection ~ 5350 3200
 Wire Wire Line
 	5350 3200 5000 3200
-Text Label 4150 1850 0    50   ~ 0
-TX
-Text Label 4150 1950 0    50   ~ 0
-RX
 Text Label 4150 2200 0    50   ~ 0
 M-TX
-Text Label 4700 2500 0    50   ~ 0
+Text Label 4750 2600 0    50   ~ 0
 M-RX
 $Comp
 L Transistor_BJT:2N3904 Q1
@@ -203,15 +168,11 @@ $EndComp
 Wire Wire Line
 	4150 2550 4150 2650
 Wire Wire Line
-	3400 3200 4450 3200
-Wire Wire Line
 	5850 1800 5500 1800
 Wire Wire Line
 	5500 1800 5500 1050
 Wire Wire Line
 	5500 1050 5350 1050
-Wire Wire Line
-	3400 1050 3400 1550
 Wire Wire Line
 	5000 1000 5000 1050
 Connection ~ 5000 1050
@@ -228,8 +189,6 @@ Wire Wire Line
 	4450 1100 4450 1050
 Connection ~ 4450 1050
 Wire Wire Line
-	4450 1050 3400 1050
-Wire Wire Line
 	4450 1400 4450 1450
 Wire Wire Line
 	4450 1750 4450 2450
@@ -238,4 +197,58 @@ Wire Wire Line
 Connection ~ 4450 3200
 Wire Wire Line
 	4450 3200 5000 3200
+$Comp
+L MCU_Microchip_ATtiny:ATtiny84A-PU U1
+U 1 1 5F481036
+P 2650 2150
+F 0 "U1" H 2121 2196 50  0000 R CNN
+F 1 "ATtiny84A-PU" H 2121 2105 50  0000 R CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 2650 2150 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/doc8183.pdf" H 2650 2150 50  0001 C CNN
+	1    2650 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2650 1050 2650 1250
+Wire Wire Line
+	2650 1050 4450 1050
+Wire Wire Line
+	2650 3200 4450 3200
+Connection ~ 2650 1250
+Wire Wire Line
+	2650 1250 2650 1300
+Wire Wire Line
+	3250 2250 3500 2250
+Wire Wire Line
+	3250 2150 3500 2150
+Text Label 3300 2150 0    50   ~ 0
+M-TX
+Text Label 3300 2250 0    50   ~ 0
+M-RX
+Wire Wire Line
+	3250 2450 3500 2450
+Wire Wire Line
+	3250 2550 3500 2550
+Text Label 3300 2450 0    50   ~ 0
+TX
+Text Label 3300 2550 0    50   ~ 0
+RX
+Text Label 4150 1900 0    50   ~ 0
+TX
+Text Label 4150 2000 0    50   ~ 0
+RX
+Wire Wire Line
+	4000 2000 5850 2000
+Wire Wire Line
+	4000 1900 5850 1900
+NoConn ~ 3250 1550
+NoConn ~ 3250 1650
+NoConn ~ 3250 1750
+NoConn ~ 3250 1850
+NoConn ~ 3250 1950
+NoConn ~ 3250 2050
+NoConn ~ 3250 2650
+NoConn ~ 3250 2750
+Wire Wire Line
+	2650 3050 2650 3200
 $EndSCHEMATC

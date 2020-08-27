@@ -16,8 +16,8 @@
 
 #define HIGH 1
 #define LOW 0
-#define IRTX PB3
-#define IRRX PB2
+#define IRTX PA6
+#define IRRX PA7
 
 /* Storage for the information received from the multimeter */
 #define BM_PBYTES 20 /* 16 bytes with data and 4 bytes with other information */
@@ -26,15 +26,15 @@ unsigned char bm[BM_PBYTES];
 void digitalWrite(int pin, int state)
 {
     if (state == HIGH) {
-        PORTB |= (1 << pin);
+        PORTA |= (1 << pin);
     } else {
-        PORTB &= ~(1 << pin);
+        PORTA &= ~(1 << pin);
     }
 }
 
 unsigned char digitalRead(int pin)
 {
-    return (PINB & (1 << pin));
+    return (PINA & (1 << pin));
 }
 
 /* Reads a byte from the multimeter */
@@ -286,9 +286,9 @@ void Send_Disp2(void)
 int main(void)
 {
     /* Pin initialization */
-    DDRB |= (1 << IRTX);         /* port output */
-    DDRB &= ~(1 << IRRX);        /* port input */
-    PORTB &= ~(1 << IRTX);       /* set output ports to low */
+    DDRA |= (1 << IRTX);         /* port output */
+    DDRA &= ~(1 << IRRX);        /* port input */
+    PORTA &= ~(1 << IRTX);       /* set output ports to low */
 
     while (1) {
         readBM689s();

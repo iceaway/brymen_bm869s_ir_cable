@@ -1,3 +1,13 @@
+NOTE
+==============
+This repo has been cloned with permission from its original author at 
+https://git.e1e0.net/brymen_bm869s_ir_cable.git
+
+The modifications I made were to make it work with an attiny84a MCU which I 
+happened to have available. The schematic has been updated to reflect this 
+as well.
+==============
+
 # Brymen 869s Serial cable
 
 BOM:

@@ -1,12 +1,13 @@
-MCU =		attiny85
-AVR_TYPE =	__AVR_ATtiny85__
+MCU =		attiny84a
+MCU_AVRDUDE =		t84
+AVR_TYPE =	__AVR_ATtiny84A__
 F_CPU =		8000000UL
 BAUD =		9600UL
 
 #LIBDIR = ${HOME}/src/electronics/avr_libs
 LIBDIR = 
 
-PROGRAMMER_TYPE = usbasp
+PROGRAMMER_TYPE = usbtiny
 PROGRAMMER_ARGS = 
 
 ### Program Locations
@@ -99,13 +100,13 @@ squeaky_clean:
 ### Flashing code to AVR using avrdude
 
 flash: $(TARGET).hex 
-	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU) $(PROGRAMMER_ARGS) -U flash:w:$<
+	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU_AVRDUDE) $(PROGRAMMER_ARGS) -U flash:w:$<
 
 flash_eeprom: $(TARGET).eeprom
-	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU) $(PROGRAMMER_ARGS) -U eeprom:w:$<
+	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU_AVRDUDE) $(PROGRAMMER_ARGS) -U eeprom:w:$<
 
 avrdude_terminal:
-	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU) $(PROGRAMMER_ARGS) -nt
+	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU_AVRDUDE) $(PROGRAMMER_ARGS) -nt
 
 
 ### Fuse settings
@@ -120,7 +121,7 @@ EFUSE = 0xff
 FUSE_STRING = -U lfuse:w:$(LFUSE):m -U hfuse:w:$(HFUSE):m -U efuse:w:$(EFUSE):m 
 
 fuses: 
-	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU) \
+	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU_AVRDUDE) \
 	           $(PROGRAMMER_ARGS) $(FUSE_STRING)
 show_fuses:
-	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU) $(PROGRAMMER_ARGS) -nv	
+	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU_AVRDUDE) $(PROGRAMMER_ARGS) -nv	
