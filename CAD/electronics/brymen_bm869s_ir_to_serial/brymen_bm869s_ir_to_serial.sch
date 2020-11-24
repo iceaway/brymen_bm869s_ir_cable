@@ -144,17 +144,6 @@ M-TX
 Text Label 4750 2600 0    50   ~ 0
 M-RX
 $Comp
-L Transistor_BJT:2N3904 Q1
-U 1 1 5C06A9ED
-P 4350 2650
-F 0 "Q1" H 4541 2696 50  0000 L CNN
-F 1 "2N3904" H 4541 2605 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 4550 2575 50  0001 L CIN
-F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 4350 2650 50  0001 L CNN
-	1    4350 2650
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R R3
 U 1 1 5C06AAA5
 P 4150 2400
@@ -165,8 +154,6 @@ F 3 "~" H 4150 2400 50  0001 C CNN
 	1    4150 2400
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	4150 2550 4150 2650
 Wire Wire Line
 	5850 1800 5500 1800
 Wire Wire Line
@@ -192,11 +179,6 @@ Wire Wire Line
 	4450 1400 4450 1450
 Wire Wire Line
 	4450 1750 4450 2450
-Wire Wire Line
-	4450 2850 4450 3200
-Connection ~ 4450 3200
-Wire Wire Line
-	4450 3200 5000 3200
 $Comp
 L MCU_Microchip_ATtiny:ATtiny84A-PU U1
 U 1 1 5F481036
@@ -212,8 +194,6 @@ Wire Wire Line
 	2650 1050 2650 1250
 Wire Wire Line
 	2650 1050 4450 1050
-Wire Wire Line
-	2650 3200 4450 3200
 Connection ~ 2650 1250
 Wire Wire Line
 	2650 1250 2650 1300
@@ -251,4 +231,24 @@ NoConn ~ 3250 2650
 NoConn ~ 3250 2750
 Wire Wire Line
 	2650 3050 2650 3200
+$Comp
+L Transistor_BJT:BC817 Q1
+U 1 1 5F4C2395
+P 4350 2650
+F 0 "Q1" H 4541 2696 50  0000 L CNN
+F 1 "BC817" H 4541 2605 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 4550 2575 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 4350 2650 50  0001 L CNN
+	1    4350 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2650 3200 4450 3200
+Wire Wire Line
+	4450 2850 4450 3200
+Connection ~ 4450 3200
+Wire Wire Line
+	4450 3200 5000 3200
+Wire Wire Line
+	4150 2650 4150 2550
 $EndSCHEMATC
